@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Графики зависимости</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #3051b3;
+    }
+
+    p.worker {
+      color: #7c7c7c;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    input {
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4368cf;
+      color: rgb(255, 255, 255);
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3247b3;
+    }
+
+    .chart-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Графики зависимости</h1>
+
+  <p class="worker"><i>Работу выполнили: Гаджиев Саид M3215, Кривуляк Сергей M3215, Хакимов Владислав M3215</i></p>
+
+  <label for="functionX">Введите x(t):</label>
+  <input type="text" id="functionX" placeholder="Например: t**2 + 2*t + 1">
+
+  <label for="functionV">Введите v(t):</label>
+  <input type="text" id="functionV" placeholder="Например: 2*t + 2">
+
+  <label for="functionA">Введите a(t):</label>
+  <input type="text" id="functionA" placeholder="Например: 2">
+
+  <button onclick="drawGraphs()">Построить графики</button>
+
+  <div class="chart-container" id="positionChart"></div>
+  <div class="chart-container" id="velocityChart"></div>
+  <div class="chart-container" id="accelerationChart"></div>
+
+  <script>
+    function drawGraphs() {
+      const functionX = document.getElementById('functionX').value.trim();
+      const functionV = document.getElementById('functionV').value.trim();
+      const functionA = document.getElementById('functionA').value.trim();
+
+      const timeValues = [];
+      const positionValues = [];
+      const velocityValues = [];
+      const accelerationValues = [];
+
+      try {
+        for (let t = 0; t <= 10; t += 0.1) {
+          timeValues.push(t.toFixed(2));
+          positionValues.push(eval(functionX.replace(/t/g, `(${t})`) || 0).toFixed(2));
+          velocityValues.push(eval(functionV.replace(/t/g, `(${t})`) || 0).toFixed(2));
+          accelerationValues.push(eval(functionA.replace(/t/g, `(${t})`) || 0).toFixed(2));
+        }
+      } catch (error) {
+        console.error('Ошибка при вычислении функций:', error);
+        alert('Ошибка при вычислении функций. Пожалуйста, проверьте правильность введенных данных.');
+        return;
+      }
+
+      function drawChart(container, label, data, unit) {
+        const trace = {
+          x: timeValues,
+          y: data,
+          type: 'scatter',
+          mode: 'lines',
+          name: label
+        };
+
+        const layout = {
+          xaxis: {
+            title: 'Время (t)'
+          },
+          yaxis: {
+            title: `${label} (${unit})`
+          }
+        };
+
+        const config = {
+          responsive: true
+        };
+
+        Plotly.newPlot(container, [trace], layout, config);
+      }
+
+      drawChart('positionChart', 'Координата x(t)', positionValues, 'м');
+      drawChart('velocityChart', 'Скорость v(t)', velocityValues, 'м/с');
+      drawChart('accelerationChart', 'Ускорение a(t)', accelerationValues, 'м/с²');
+    }
+  </script>
+</body>
+</html>
