@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../kitty.png" type="image/x-icon">
+    <title>Моделирование разрешающей способности дифракционной решетки</title>
+    <script src="../libs/plotly.min.js"></script>
+    <script src="../libs/numeric-1.2.6.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .plot-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Моделирование разрешающей способности дифракционной решетки</h1>
+    <h4>Выполнил Гаджиев Саид M3215</h4>
+    <p>Эта модель демонстрирует разрешающую способность дифракционной решетки с заданным периодом и общим числом штрихов.<br>Цель - показать способность различать близкие спектральные линии<br>Ниже приведены визуализации интенсивности дифракции и разделение близких спектральных линий.</p>
+    <h2>Параметры</h2>
+    <form id="paramsForm">
+        <label for="period">Период решетки:</label>
+        <input type="number" id="period" name="period" value="1.0" step="0.1"><br><br>
+        <label for="total_strokes">Общее число штрихов:</label>
+        <input type="number" id="total_strokes" name="total_strokes" value="1000" step="1"><br><br>
+        <label for="d">Расстояние (d):</label>
+        <input type="number" id="d" name="d" value="2" step="0.1"><br><br>
+        <button type="button" onclick="plotGraphs()">Построить графики</button>
+    </form>
+    <div id="plot2" class="plot-container"></div>
+    <div id="plot1" class="plot-container"></div>
+    <h2>Интенсивность близких спектральных линий (2D)</h2>
+    <p>Следующий график показывает распределение интенсивности двух близких спектральных линий с длинами волн 470 нм и 475 нм соответственно.</p>
+    <div id="plot3" class="plot-container"></div>
+    <script src="./script.js"></script>
+</body>
+</html>

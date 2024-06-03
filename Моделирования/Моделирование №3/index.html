@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./kitty.png" type="image/x-icon">
+    <title>Моделирование №1 «Магнетрон»</title>
+    <script src="./libs/math.js"></script>
+    <script src="./libs/plotly.min.js"></script>
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Моделирование движения электронов<br>«Магнетрон»</h1>
+        <h4>Выполнил Гаджиев Саид M3215</h4>
+        <audio controls>
+            <source src="music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <form id="parameters-form">
+            <label for="Ra">Радиус анода (Ra):</label>
+            <input type="number" id="Ra" name="Ra" step="0.001" value="0.01" required><br>
+            <label for="Rk">Радиус катода (Rk):</label>
+            <input type="number" id="Rk" name="Rk" step="0.001" value="0.005" required><br>
+            <label for="U">Разность потенциалов (U):</label>
+            <input type="number" id="U" name="U" step="1" value="100" required><br>
+            <label for="Ic">Начальное значение тока (Ic):</label>
+            <input type="number" id="Ic" name="Ic" step="0.1" value="1" required><br>
+            <label for="n">Число витков на единицу длины (n):</label>
+            <input type="number" id="n" name="n" step="1" value="100" required><br><br>
+            <button class="animated-button" type="submit"><b>СМОДЕЛИРОВАТЬ</b></button>
+        </form>
+        <div id="orbit-radius"></div>
+        <div id="plot" style="width: 600px; height: 600px;"></div>
+        <div id="plot2" style="width: 600px; height: 600px;"></div>
+        <div id="log"></div>
+    </div>
+
+    <!-- КИТИКИ В БАНАНЕ <3 -->
+    <img src="./kitty.png" class="kitty" style="top: 10%; left: 10%;">
+    <img src="./kitty.png" class="kitty" style="top: 20%; left: 80%;">
+    <img src="./kitty.png" class="kitty" style="top: 70%; left: 40%;">
+    <img src="./kitty.png" class="kitty" style="top: 70%; left: 20%;">
+    <img src="./kitty.png" class="kitty" style="top: 90%; left: 70%;">
+    <img src="./kitty.png" class="kitty" style="top: 15%; left: 30%;">
+    <img src="./kitty.png" class="kitty" style="top: 25%; left: 60%;">
+    <img src="./kitty.png" class="kitty" style="top: 35%; left: 25%;">
+    <img src="./kitty.png" class="kitty" style="top: 45%; left: 20%;">
+    <img src="./kitty.png" class="kitty" style="top: 55%; left: 70%;">
+    <img src="./kitty.png" class="kitty" style="top: 65%; left: 10%;">
+    <img src="./kitty.png" class="kitty" style="top: 75%; left: 80%;">
+    <img src="./kitty.png" class="kitty" style="top: 85%; left: 60%;">
+    <img src="./kitty.png" class="kitty" style="top: 95%; left: 30%;">
+</body>
+</html>

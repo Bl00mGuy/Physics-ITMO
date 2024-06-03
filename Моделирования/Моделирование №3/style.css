@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f4ecf4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#plot, #plot2 {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 20px 0;
+}
+
+#orbit-radius {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.animated-button {
+    background-color: #f3b0e9;
+    color: #000000;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 100px;
+}
+.animated-button:hover {
+    background-color: #e49bef;
+    transform: scale(1.05);
+}
+.animated-button:active {
+    background-color: #f6aafd;
+    transform: scale(0.95);
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Стили для изображения котиков */
+.kitty {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.kitty:nth-child(odd) {
+    animation: float 6s ease-in-out infinite;
+}
+
+.kitty:nth-child(even) {
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
